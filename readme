@@ -1,6 +1,11 @@
 Proyecto de creación de una aplicación de presupuesto
 
 
+link de despliegue en Streamlit: 
+
+https://aplicacion-de-presupuesto.streamlit.app/
+
+
 
 
 Completa la Category clase. Debe ser capaz de instanciar objetos según diferentes categorías presupuestarias, como comida , ropa y entretenimiento . Al crear objetos, se pasan en el nombre de la categoría. La clase debe tener una variable de instancia llamada ``` ledger que sea una lista. La clase también debe contener los siguientes métodos:
