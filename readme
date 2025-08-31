@@ -1,0 +1,65 @@
+Proyecto de creación de una aplicación de presupuesto
+
+
+
+
+Completa la Category clase. Debe ser capaz de instanciar objetos según diferentes categorías presupuestarias, como comida , ropa y entretenimiento . Al crear objetos, se pasan en el nombre de la categoría. La clase debe tener una variable de instancia llamada ``` ledger que sea una lista. La clase también debe contener los siguientes métodos:
+
+Un deposit método que acepta una cantidad y una descripción. Si no se proporciona ninguna descripción, debe ser una cadena vacía por defecto. El método debe añadir un objeto a la lista contable con el formato {'amount': amount, 'description': description}.
+Un withdraw método similar al depositmétodo anterior, pero el importe ingresado debe almacenarse en el libro mayor como un número negativo. Si no hay fondos suficientes, no se debe agregar nada al libro mayor. Este método debe devolver True si se realizó el retiro y, Falseen caso contrario, si no.
+Un get_balance método que devuelve el saldo actual de la categoría de presupuesto en función de los depósitos y retiros que se han producido.
+Un transfer método que acepta un importe y otra categoría presupuestaria como argumentos. El método debe agregar un retiro con el importe y la descripción "Transferir a [Categoría presupuestaria de destino]". A continuación, el método debe agregar un depósito a la otra categoría presupuestaria con el importe y la descripción "Transferir desde [Categoría presupuestaria de origen]". Si no hay fondos suficientes, no se debe agregar nada a ninguno de los libros contables.  
+Este método debe indicar True si se realizó la transferencia o False no.
+Un check_funds método que acepta un importe como argumento. Devuelve el valor False si el importe es mayor que el saldo de la categoría presupuestaria; True en caso contrario, devuelve el valor. Este método debe ser utilizado tanto por el withdraw método como por transfer método.
+Cuando se imprime el objeto de presupuesto debería mostrarse:
+
+Una línea de título de 30 caracteres donde el nombre de la categoría está centrado en una línea de *caracteres.
+Una lista de los artículos del libro mayor. Cada línea debe mostrar la descripción y el importe. Se deben mostrar los primeros 23 caracteres de la descripción y, a continuación, el importe. El importe debe estar alineado a la derecha, contener dos decimales y mostrar un máximo de 7 caracteres.
+Una línea que muestra el total de la categoría.
+He aquí un ejemplo de uso:
+
+food = Category('Food')
+food.deposit(1000, 'deposit')
+food.withdraw(10.15, 'groceries')
+food.withdraw(15.89, 'restaurant and more food for dessert')
+clothing = Category('Clothing')
+food.transfer(50, clothing)
+print(food)
+Y aquí hay un ejemplo del resultado:
+
+*************Food*************
+initial deposit        1000.00
+groceries               -10.15
+restaurant and more foo -15.89
+Transfer to Clothing    -50.00
+Total: 923.96 
+
+Además de la Category clase, crea una función (externa a la clase) create_spend_chart que tome una lista de categorías como argumento. Debería devolver una cadena que sea un gráfico de barras.
+
+El gráfico debe mostrar el porcentaje gastado en cada categoría transferida a la función. Este porcentaje debe calcularse solo con retiros, no con depósitos, y debe ser el porcentaje del monto gastado en cada categoría respecto al total gastado en todas las categorías. A la izquierda del gráfico, deben aparecer las etiquetas del 0 al 100. Las barras del gráfico deben estar formadas por el carácter "o". La altura de cada barra debe redondearse a la decena más cercana. La línea horizontal debajo de las barras debe extenderse dos espacios más allá de la última barra. El nombre de cada categoría debe escribirse verticalmente debajo de la barra. En la parte superior, debe haber un título que diga "Porcentaje gastado por categoría".
+
+Esta función se probará con hasta cuatro categorías.
+
+Mire atentamente el ejemplo de salida a continuación y asegúrese de que el espaciado de la salida coincida exactamente con el ejemplo.
+
+Percentage spent by category
+100|          
+ 90|          
+ 80|          
+ 70|          
+ 60| o        
+ 50| o        
+ 40| o        
+ 30| o        
+ 20| o  o     
+ 10| o  o  o  
+  0| o  o  o  
+    ----------
+     F  C  A  
+     o  l  u  
+     o  o  t  
+     d  t  o  
+        h     
+        i     
+        n     
+        g     
